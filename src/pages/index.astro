@@ -1,192 +1,200 @@
 ---
-import { getCollection } from 'astro:content'
-import Button from '../components/Button.astro'
-import ContactSection from '../components/ContactSection.astro'
-import Globe from '../components/Old/Globe'
-import ProjectCard from '../components/ProjectCard.astro'
-import SectionTitle from '../components/SectionTitle.astro'
-import SkillCard from '../components/SkillCard.astro'
-import SkillsTicker from '../components/SkillsTicker.astro'
-import PageLayout from '../layouts/PageLayout.astro'
+import "../styles/global.css";
 
-const allProjects = await getCollection('projects')
+const title = "s31f.dev — fullstack developer";
+const description =
+  "Sites and web apps, Telegram bots, scrapers, integrations, AI features — and fixing code that someone else, or some AI tool, left broken.";
+
+const STACK = [
+  ["front", "Next.js · React · TypeScript"],
+  ["back", "Node · Python · Postgres · Prisma"],
+  ["bots", "Telegram Bot API · MTProto"],
+  ["pay", "Stripe · YooKassa webhooks"],
+  ["infra", "Vercel · Netlify · Docker"],
+  ["ai", "Claude Agent SDK · OpenAI API · RAG"],
+];
+
+const SERVICES = [
+  {
+    cmd: "build --site --web-app",
+    text: "Landing pages, dashboards, shops, MVPs. Next.js, React, Astro, Node, Postgres.",
+    price: "from $40",
+  },
+  {
+    cmd: "build --telegram-bot",
+    text: "Orders, bookings, payments, admin panel, AI answers from your own content.",
+    price: "from $30",
+  },
+  {
+    cmd: "automate --scrape --report",
+    text: "Public data into Excel, Google Sheets or a database. Scheduled runs, alerts, reports.",
+    price: "from $15",
+  },
+  {
+    cmd: "connect --payments --crm",
+    text: "Webhooks with signature checks, retries and logs, so nothing gets lost.",
+    price: "from $30",
+  },
+  {
+    cmd: "add --ai",
+    text: "Assistants that answer from your own docs, text generation, agents that do the boring part.",
+    price: "from $40",
+  },
+  {
+    cmd: "fix --whatever-broke",
+    text: "Bugs, failed deploys, someone else's code — including apps built in Lovable, Bolt or Cursor.",
+    price: "from $25 · pay after it works",
+  },
+  {
+    cmd: "something --else",
+    text: "Not on the list? Describe it. If I can't do it well, I'll say so straight away.",
+    price: "ask",
+    ask: true,
+  },
+];
+
+const STEPS = [
+  ["You describe the task", "In plain words. A link, a screenshot or an error text helps."],
+  ["I scope it", "Price and timing before I start. If it's a bad idea, I say so."],
+  ["I build and test it", "You get it working, plus a short note on how it's put together."],
+  ["You pay", "USDT or USDC. Small tasks after they work, longer projects in parts."],
+];
+
+// shot: файл из public/work/, пока пусто — рисуется рамка с подписью
+const WORK = [
+  {
+    name: "s31f.dev",
+    text: "Astro · CSS — this page: static build, no client-side JavaScript.",
+    shot: "",
+  },
+  {
+    name: "Order hunter bot",
+    text: "Node · Claude Agent SDK · Telegram — watches feeds, triages with an LLM, sends a card with a draft reply.",
+    shot: "",
+  },
+  {
+    name: "fix-my-app",
+    text: "Static landing — the form opens Telegram or email with the message prefilled, no backend.",
+    shot: "",
+  },
+];
+
+const LINKS = [
+  ["tg @s31fdev", "https://t.me/s31fdev"],
+  ["s31f.dev@gmail.com", "mailto:s31f.dev@gmail.com"],
+  ["discord s31f.dev", "https://discord.com/users/395999539850379265"],
+  ["github.com/s31fdev", "https://github.com/s31fdev"],
+];
+
+const telegram = "https://t.me/s31fdev?text=Hi!%20I%20have%20a%20task%3A%20";
 ---
 
-<PageLayout title='Home'>
-	<div class='section hero'>
-		<div class='hero-text'>
-			<h1 class='hero-title'>Hey there! I'm thrilled to have you here.</h1>
-			<p class='hero-subtitle'>
-				As a passionate web developer, I am excited to share my journey and the
-				projects I have created using a variety of cutting-edge technologies.
-			</p>
-		</div>
-		<Button text='More about Me' link='about' theme='dark' icon='right-arrow' />
-	</div>
-	<div class='columns'>
-		<div class='section location'>
-			<SectionTitle title='St. Petersburg, Russia' icon='mappin' />
-			<div class='globe'>
-				<Globe client:only />
-			</div>
-		</div>
-		<div class='section skills'>
-			<SectionTitle title='Skills' icon='diamond' />
-			<SkillsTicker />
-		</div>
-	</div>
-	<div class='section projects'>
-		<SectionTitle title='Projects' icon='pencilline' />
-		<div class='projects-list'>
-			{
-				allProjects
-					.slice(0, 2)
-					.map(project => (
-						<ProjectCard
-							title={project.data.title}
-							url={project.slug}
-							tags={project.data.tags}
-							imageUrl={project.data.image.url}
-						/>
-					))
-			}
-		</div>
-		<Button
-			text='All projects'
-			link='projects'
-			theme='dark'
-			icon='right-arrow'
-		/>
-	</div>
-	<div class='section'>
-		<SectionTitle title='Stack' icon='stacksimple' />
-		<div class='stacks'>
-			<SkillCard icon='react' link='https://reactjs.org'>
-				<h3 slot='title' class='stack-title-text'>React</h3>
-			</SkillCard>
-			<SkillCard isEnd icon='nextjs' link='https://nextjs.org'>
-				<h3 slot='title' class='stack-title-text'>NextJS</h3>
-			</SkillCard>
-			<SkillCard isEnd icon='typescript' link='https://www.typescriptlang.org'>
-				<h3 slot='title' class='stack-title-text'>TypeScript</h3>
-			</SkillCard>
-			<SkillCard
-				isEnd
-				icon='javascript'
-				link='https://developer.mozilla.org/en-US/docs/Web/JavaScript'
-			>
-				<h3 slot='title' class='stack-title-text'>JavaScript</h3>
-			</SkillCard>
-		</div>
-		<Button text='Full Stack' link='stack' theme='dark' icon='right-arrow' />
-	</div>
-	<ContactSection />
-</PageLayout>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={Astro.site} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={Astro.site} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content="Send the task, I'll ship it. Sites, bots, scrapers, integrations, AI features, and fixing what broke." />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+<div class="wrap">
 
-<style>
-	.columns {
-		width: 100%;
-		max-width: 800px;
-		display: flex;
-		flex-direction: row;
-		@media screen and (max-width: 800px) {
-			flex-direction: column;
-		}
-		justify-content: center;
-		align-items: center;
-		gap: 24px;
-	}
-	.hero {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		justify-content: center;
-		gap: 24px;
-		padding: 24px;
-	}
-	.hero-text {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		justify-content: center;
-		gap: 12px;
-	}
-	.hero-subtitle {
-		font-size: 16px;
-		line-height: 1.4em;
-		color: var(--light-60);
-		font-weight: 300;
-	}
-	.location,
-	.skills {
-		height: 240px;
-		@media screen and (max-width: 800px) {
-			height: 360px;
-		}
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		justify-content: flex-start;
-		gap: 24px;
-		position: relative;
-		overflow: hidden;
-	}
-	.globe {
-		aspect-ratio: 1 / 1;
-		bottom: -190px;
-		flex: none;
-		height: var(--framer-aspect-ratio-supported, 388px);
-		left: 0;
-		position: absolute;
-		right: 0;
-		@media screen and (max-width: 800px) {
-			bottom: unset;
-			height: var(--framer-aspect-ratio-supported, 342px);
-			top: 80px;
-			width: 100%;
-		}
-	}
-	.projects {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		justify-content: center;
-		gap: 24px;
-	}
-	.projects-list {
-		width: 100%;
-		display: grid;
-		flex: 0 0 auto;
-		gap: 24px;
-		grid-auto-rows: minmax(0px, 1fr);
-		grid-template-columns: repeat(2, minmax(200px, 1fr));
-		@media screen and (max-width: 800px) {
-			display: flex;
-			flex-direction: column;
-		}
-		align-items: center;
-		justify-content: center;
-		gap: 24px;
-	}
-	.stack {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		justify-content: center;
-		gap: 24px;
-	}
-	.stacks {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: center;
-		gap: 16px;
-		@media screen and (max-width: 800px) {
-			display: grid;
-			grid-template-columns: repeat(2, minmax(200px, 1fr));
-		}
-		@media screen and (max-width: 500px) {
-			grid-template-columns: repeat(1, minmax(200px, 1fr));
-		}
-	}
-</style>
+  <header class="top">
+    <span class="name">s31f.dev</span>
+    <span class="live">available for work</span>
+    <span class="dim">remote</span>
+    <a class="say" href="#contact">say hi →</a>
+  </header>
+
+  <div class="head">
+    <section class="panel whoami">
+      <header><span>~/whoami</span><span>01</span></header>
+      <div class="inner">
+        <h1>Fullstack developer.<br />Send the task, I'll ship it<span class="cursor" aria-hidden="true"></span></h1>
+        <p class="lead">
+          Sites and web apps, Telegram bots, scrapers, integrations, AI features — and fixing code that someone else,
+          or some AI tool, left broken. A one-hour task or a project that runs for months: both fine.
+        </p>
+        <div class="cta">
+          <a class="btn btn-dark" href="#contact">Send a task</a>
+          <a class="btn btn-ghost" href="#services">See what I do</a>
+        </div>
+      </div>
+    </section>
+
+    <aside class="panel stack">
+      <header><span>~/stack</span><span>02</span></header>
+      <dl class="inner">
+        {STACK.map(([key, value]) => <><dt>{key}</dt><dd>{value}</dd></>)}
+      </dl>
+    </aside>
+  </div>
+
+  <section class="panel services" id="services">
+    <header><span>~/services</span><span>03</span></header>
+    <div class="inner">
+      {SERVICES.map((s) => (
+        <div class:list={["svc", { ask: s.ask }]}>
+          <span class="dollar" aria-hidden="true">$</span>
+          <div><h3>{s.cmd}</h3><p>{s.text}</p></div>
+          <span class="price">{s.price}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="panel steps">
+    <header><span>~/how-it-works</span><span>04</span></header>
+    <div class="inner">
+      {STEPS.map(([name, text], i) => (
+        <div><b>{i + 1}</b><h3>{name}</h3><p>{text}</p></div>
+      ))}
+    </div>
+  </section>
+
+  <section class="work" id="work">
+    {WORK.map((w, i) => (
+      <article class="panel">
+        <header>~/work/{String(i + 1).padStart(2, "0")}</header>
+        {w.shot ? <img class="shot" src={w.shot} alt={w.name} width="800" height="500" loading="lazy" />
+                : <div class="shot">no screenshot yet</div>}
+        <div class="meta"><h3>{w.name}</h3><p>{w.text}</p></div>
+      </article>
+    ))}
+  </section>
+
+  <section class="panel contact" id="contact">
+    <header><span>~/contact</span><span>05</span></header>
+    <div class="inner">
+      <div>
+        <h2>Tell me what you need</h2>
+        <p>Describe the task in a couple of sentences. You get the price and the timing — usually the same day.</p>
+        <div class="links">
+          {LINKS.map(([name, href]) => <a href={href}>{name}</a>)}
+        </div>
+      </div>
+      <a class="btn btn-accent" href={telegram}>Write on Telegram</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>© {new Date().getFullYear()} s31f.dev</span>
+    <span>built with Astro · no client-side JavaScript</span>
+  </footer>
+
+</div>
+</body>
+</html>
