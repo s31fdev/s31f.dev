@@ -101,7 +101,7 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL :
   <meta property="og:type" content="website" />
   <meta property="og:url" content={Astro.site} />
   <meta property="og:title" content={title} />
-  <meta property="og:description" content="Send the task, I'll ship it. Sites, bots, scrapers, integrations, AI features, and fixing what broke." />
+  <meta property="og:description" content={description} />
   <link rel="icon" href={base + "favicon.svg"} type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
