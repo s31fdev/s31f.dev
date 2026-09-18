@@ -125,6 +125,11 @@ footer { display: flex; justify-content: space-between; gap: 16px; color: var(--
 
 :root { --line-strong: #b9b4a7; }
 
+/* Панели въезжают снизу, страница при этом становится на 16px выше своего
+   покоя. Chrome компенсирует это привязкой прокрутки и на каждой перезагрузке
+   добавляет те же 16px к позиции — поэтому привязку выключаем. */
+body { overflow-anchor: none; }
+
 /* раскладка, нужна независимо от анимаций */
 h1 .line { display: block; }
 .svc .dollar { display: inline-block; }
