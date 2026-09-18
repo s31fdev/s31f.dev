@@ -97,6 +97,8 @@ h1 {
 .links a:hover { color: var(--accent); }
 
 footer { display: flex; justify-content: space-between; gap: 16px; color: var(--dim); font-size: 13px; padding-top: 4px; }
+footer a { text-underline-offset: 3px; }
+footer a:hover { color: var(--accent); }
 
 @media (max-width: 900px) {
   .wrap { padding: 18px 16px 28px; gap: 12px; }
@@ -119,15 +121,15 @@ footer { display: flex; justify-content: space-between; gap: 16px; color: var(--
 }
 
 /* ─── курсор ───────────────────────────────────────────────
-   Оранжевая стрелка вместо системной, на кликабельном — блок каретки.
+   Оранжевая стрелка с тёмным контуром вместо системной, на кликабельном — блок каретки.
    PNG, потому что SVG-курсоры Chrome не понимает; вклеены как data-URI,
    чтобы курсор не моргал на первом наведении. Ключевые слова в конце —
    запасной вариант, если картинку не приняли. */
 body {
-  cursor: image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACuUlEQVR4nKyVTWgTQRTH35vZfG27jbbJJruJBjHtpUcj6kUURBDqzQpiD0IRxJMePHjwoygKnq1IDoJQEEGqF4XiQRSKUtDeqlDsQdOkcW1Rk6xNdjPjbLU1rf3Y2P3B7rx5OzP/mTf7Zij8IZlsa/f7Fck0zRp4CFk0OJezoYA0kUhEusBDyF+TB5lYCAU6pmmRDHgEWemoA4YlIo3qunoIPKAhRMD3tdow0m3CHsX2IeCIpqknYZMsCaAYkYvSRxCup2p4tN0mgiFNi12ETUBWc6JQO5+04XTMcoRv6Hr8juMGrwQWOaHacCVliUb8TEKPPRGuAHgp4HAgXIdbO2ooNqUnqcVeRiIRBZpgQwGHXQqDwXSVyBLPyAE6Fo1G4+ASVwIO6RCHu+kq3Up5ZyhA3qmqutNNP9cCDgmxA9muKt3uY2rQh2/dJGRTAg5bJIDBzhrtlpniJGQ8Hj3iWgDX+RGnfiKMl8nC894k0KdaRPczv8iVpyIh+9bqJy0TWPFxzgJo9/22z035eZmRf6bgJKigX5hDsNEKeIP94huB4x+C8GyOLtT3h+so8uE7Y3YGsd41P28lEc2O6emZkHgOwhqsugfDXylc+xwAJtZ0vyjVuTioeiO2Uw+LkHTncsbk7OzsdC73Y040n4d1WHbYOUvIFiS4XfA79QHO2WHDJvRNiUIqCJBpsRlyvARNHBsNhx3S12UJHhiSmDDvz+dnrubzX54LpclHBmVOm96oTThiWtdjPU0LiEEt8bJFeSyfL95b8gPeHDcl8kkEYrfCYVugbhPACy7HB7potLQoHxHZUKFgjDQ2KJXKE2Gl9ayIv7y3jUEQgYyWaCoUkh9XKpXiRgKuYilut8uIZCCAjFfFLviRD5s2nioWixVPBBIJpYOi/Mpm/KFl8axhGDPgkv+6RJrhFwAAAP//7BpiTQAAAAZJREFUAwBGlu7rBqZNXwAAAABJRU5ErkJggg==") 1x, url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAFH0lEQVR4nNSaW2gcVRjH/2dmsttcNpu0yV6rsSa+aG0RxQdb0apQUrQP3oqXpygqFJGCgkS0aFVoFa1ITBHaSqkgReuDlFQQH4rUSwuK4pM1trW7m+ume0n3kp05fmd3Z3Y3GZLsZmaz/mDJ2TOTw/nP+c73P3POSvifI5tV+v2e7a2tbV2zs7MhNDgLBIjOS5J0WpLYs+3trWoiMXsGDYxkUndDqcj2BQLew6KABkVa6gbG2EAw6DtFRScakCUFFOkPBHw/uN3uTjQYJgKYppe2d+TgknmhluGOtrY1P/v9/h40ECYCuBHvt7RoGO7NoEvhxRp2E2P8XDDo2YwGwSyEDAGi2wEnx6G+NHqchYGhkejmXDobDHrvRwOwrDmwtgkYopG4uUXNfycRLZzjW8pQT2KVWe4kRgs5xgcbsrjLpYtgMn0+p3B6HavIsgUIHHT3vp4sHlqbK2/irdX0iqoECCh8sCc4h2c82bK61fOKqgXoPOVVMXhdlhrQM9TqeEXNAgQPdKjYT/PCySq84lwg0Hk96sSKBAhub9PwMWUo3fBIRi9F0vl6ecWKBQj6mnne8LxN9fcKSwQIhOEN92XKDa8uXmGZAEGHUjC8Ta3zvcL7GmzCUgECYXjv08S+p10tq2Vv2+UVlgsQKNTNvfMMzy6vsEWAjjC8531keNw+r7BVgGBXt4o3aDRk2OMVtgsQ3OvW8vNCNzwrvaIuAgSbi4bnLr3hWeIVdRMgyBteX4Xhrdgr6ipA4HMURPSu0UUUvMLv9w6iBpSFVcxI4LWou0qZ85uojGSOIa0xZChiMvSanVF5vqwVrWD+jhptpL1DGSoXDo8dQBUosJg9o05cytQ6sHwLqmRFAsIZll8D1QrF/zTtcsTob5zCaDSX42+iSmoSkKQw2Xu5Cb/OKni6ew4DvpLjPkjuOxRxiN4lSNpPmqZ9KstSVFVZUpJysWwWcYfDEQuHw9dgAWYCKrZV5jNBxvryP05cyRbC5MspGY935dBWbGlHp4ojYxpSkFzU0NZUKrsrFovNwCaqCta/UgwvXCh1XpDmEk7NlKZkMxV3rjPyQDO57m7YiJkA48GXLx1/STC89LcDV9XCv1Dc/qtfOzldOZAPryuFFN33ImzEbGvReJz6JukIpcXBi8780y526nw6nd3IOf9afJ+ck/DdTKmpbpoC97kLImhyeujM4TnYxJIjcGRMwXshh5G/iRHK1XdHo9E459pBvfKLqaaKRp7orlhKvwqbMNudNgQcn1BwfLLUMXriR0OhsR1UTIvvkcjkGar7TZRH0xJ+T5aCrpeWDZuMrUi2gZYLO1EfAdyom8iVX+bvhsPjA/Pvpjz+oV4+MVU5Fx7rKt/BY6/ABhY9H9ChmN8dCo2bvteGQhPHaBTGRflsQsGVdOnaFlpGr3cYC7etPp/vTliM2QhUGAwZ0SMU859gUbhx/atFMpIsw/JRWCBAltMj9ER/pCK5J7ZFIhMnl2pE06RhvTwyoyBeFjn95MztxqYXHvV4PDfCQhYcs8bjmRQdrR5OJJIHksnkRSwDuu+ay9XaQ5P1NpWylYtavbVVwwUyvs/GFVymxV22ePAjy3zayqNby7Y5vF7vRkVhf4hyp6whQOv+P1MLz9E1Te2n7HUaFmHpPg29Hn5PTW4zuZSmRHCUc7Y/EolcgoVY+j5AnTxI2aZcQJTM7iPGUkPhcGIaNmD5ThltXh0jKevpc4JS7CHYTMP+hGC51P2l3mr+AwAA//9UXjI+AAAABklEQVQDAD8U2EFNP7YkAAAAAElFTkSuQmCC") 2x) 3 1, auto;
+  cursor: image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAACN0lEQVR4nKyTy2sTQRzHvzOzm6bpi6bbbLIbUxoLooKIl+pNDx58gGCoFw8eBEUR+gdUK1568HFSBAVPFTyqB0+iIh68+KAHpVgoGkq2hr4sRrOvGWdLGypNu222n8vuDL/5zMxvfj+KZQxD22UYRgLbAK39EGVMId67bLY9iYjUpFyImA96gIrmT6aZzCICNSkBxEiPjd44NxnUz0E60CB09aCFCdzN28q+hJ9khH0wzdQhNEBNKpYOCzQxgpt5hx7p8BMU5G063X0MW4TWm2SEYCjn0gHNVRmlLzKZ1FlEla5wMeNj0HQIpfSxaepXsR3SgFNdHMM5Jwi8YRj6IyynKZI04HCHj9u9DlUJzu0w9OdySo0sDdjfynG/z2ZxJo7nzPRrTdPaQqVkqQA2pq9Z4IEUdyq8PxFn73VdT9WLU8JElk1wfiLGq4KuvlVw/b2M8WH5vbIpqeUQXPuu8suGR/ckeFBiHoS4w7k3SgivUOr/npparMhQu976NTn9UiG48C3mTdqMjv5kTlxGnO5yY3L3AcuaHS+V5otSOLeecI30zQLD4GQTr3KMCOHuHvujxIpVoKD54EBe1uoJbIL/pM/mVHhcXCqWytdLpdlxBeLVkxnFb5fHPNnpBYkc2pJUduZXznnBssoPV+YcLm69nFfIgifv3u1RR+CgfPH+MGlYd5AeU5+Qj7VzkcP78ZfCF+KM3PjpRotYiBQtba2VGY8c/eXSe66PwvR0+WPYmtA+boR/AAAA///9/PuyAAAABklEQVQDAAJju3wIeJz4AAAAAElFTkSuQmCC") 1x, url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAYAAADFw8lbAAAEr0lEQVR4nNSYXWgcVRTH//fOfqWbD91sk92dtGlJUIlIpKK0DQWhRazVvhRRqr5UH9KHIqLi51sftA+JlFIT8AuKVbGo9SFUoUgVTa0mQkH0QYuC3XU3SW1Md9Od3Z25PXe2O1uSTbubvZOkP9i9987cmfnPmXPPOTMcNwl87gZdj+yIxSKHw+FwE1YQbO4GEjnJGMKAOFso4IFUKjWBFcA8ixZF2r1eTWNndD18G1YAfP4mkS/1SPQ6wHM6Gg3fg2WmglDmlf89DWZpQ4gxz3fSd7GM8IV2bG428dZ6A34mpGVXCSG+jMXad2OZ4Nfb2dto4VCXgRZNimUa/Y7qevvrWAYW9FEhiqPuBoGhbgNRn3V1P9tPln0PFSKGm/BqJkV8JJYs2xUoiiXL7iGfHaGuD0tEVUIlzR7YbrAh6Cyy7WTZU6FQqBlLQNVCJQGafWB9DltbCvaYLLspEPD91NraqsNlahIq0cgzX1ubx5Ori+GWIsLtfr9nLBKJ9MBFahZaYk+kgBf1HOSyI8tGOBc/UkTYCJdYtFDJ9pCJ/Z055rVjLaMihp0iv90JF6hLqKSv2cIg+W2Q2/HMT7/jut7WD8XULVRyZ9DC2xRrwx7bsuTFfCgWa3sTClEiVLLGLzDcnUWHrxRr+UsUaz9VdQ1lQiUhKmekZXtWObH2UfLZrzs60IA6USpU0qjB9tnNTUWx5AnbLKt9NBZrCqMOlAuV+OisFA3wSMhJDHcDwbFY7Na1WCSuCJXIJfWcnsfTbbnSuJOCwhhFhF4sAteElnii3cSra3J0IbuuXS0EH6XEsBU1smCFzxQWcdtuMfHGOgMBZtlFOJ39ZDTa9lQt5/BAAf8aDINxL9IWQ5aik/zNmgwG5YCcqHzHnPMjVB+MJ5PJ36q5hhKh389wjGe0mo6hwnxS03Iz1c6vWeg30xwfpLzoj+bt9Cm5j0LRUNKZ8jO9Xw1Tm6HVnjZNpKk/K8ecG2nGCpl4/FKGxlnUQE1CP5zQ8H6qWNQPnPeir8ew+50BYFNjAafT9unuzeetnZOTk0kopOpVP3De44iUTJscJy+WD3+8reD0fT6+D4q5oVC5MF7524eRi97SJnq0+Ed2jk2VH8hdQXFN6mT9KtLmDYSW30KnyUj7zvlx5pKzUE7E48kt5IODcvBHVsPZdHlVPxZ2rBqitPkM3BVajKPxHMPeP/04l3WmDJPIh6g1CgXrXRJrr9jPLpStuqXFuqZ6wrNwV2jRol9Ne5HKUz6xwcskcm9pBi0UWr2Q7/b4YUZDIlfJqqyLgvouuCeUeeds2J1IJA/MnUWfJA/JlhIjjl8ox9AdrSZCnqJVOWcvwD2huFxsxP8UA+9PJFKfVDqQvpv+Rc0x2R8hoRmzvG9Xq7OoNqp64ZsnlJ7z5/SofzdN1kfp7dvrHSyEdVC2lwXHif/KVn2YyrsG5nwCUmLVuksP+kI9Tv66od1r4eM7DIxSOv2CwlYppdJNz5LrBFEnCnK9GKD7PSoX3oO/BuYVIYxZSl7ylBRz5IcJOlW0NJYFB2PiHcMwD09NTSWgACXVEwl7nh7/R9T+QhY8mEhMHIFilvQbZz24/iqiiisAAAD//3HQ9AEAAAAGSURBVAMA6SCELT9oIgYAAAAASUVORK5CYII=") 2x) 2 1, auto;
 }
 a, .btn, summary, [role="button"] {
-  cursor: image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAA0ElEQVR4nOyVvQrCMBSF701toVWcpD+KLoJOFkH0oXwgX8qCOIq4lEIV3SyKYhIrxS2JqO2Ws5zhntyP3OUQqFi1D3MMgtaE81pDOMRHlqanSLlAMbO6bW/JEENFBgzkUZwcpl8DXNcNTZOs5/4d+jYXZnZXhMXeyn9CB0ly3Ioy0hMZBrMACIzqDIaOGGCTwinlTdkeAhVLAzRAAzRAA8qQtA8QefbyTV4qFybupfhWOCFwlu4BhXodb0UBx6rMz5X5lu/7s9wc4eM/S78UPQEAAP//xm1RbwAAAAZJREFUAwCkNjdDK1/MAAAAAABJRU5ErkJggg==") 1x, url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAABV0lEQVR4nOzZv0rDUBTH8d+9TS0IRYhoJMWh+ACdnBzcdNIHcPUVfBCfoM/hKOIiog4dBekUEqyKwgWh3lyPhgyOPRGOwfOB0Ls0uV/yZzkWLWfRcq0PiNBAkiTDKAr7IdgN8MzKEld5nl+DyYApTZMjY8yYlj00FEIYZ1lxDAZWQJrGm8Ys3eMXNl/zHkO6E1MsiPUIhRBtG1NtfqvnsbNSguPyzeLhvfO9tjaM6GeKBXHfgbV6cbjqcUAHRxxZnGZVAD1GCRj0MypNA6RpgDQNkKYB0jRAmgZI0wBpGiBNA6RpgDQNkKYB0jRAmgZI0wBp/3NKaa19rtfnrxZPH7xZ4cT9+N8MDKyA+by87Xarm3fnIjrQCI2XaMjWuQFDBwzOuZd+f9nRmHUPDdHmAw0MT7IsPwMDe078ZTBYH9Hld+k0MXgevQ8XRVFMwNQo4C/Qz6i0TwAAAP//uoxIrwAAAAZJREFUAwAouleoNtp3MAAAAABJRU5ErkJggg==") 2x) 12 12, pointer;
+  cursor: image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAoElEQVR4nOyUvwrCMBDG70pD4tAtoNwi+GwOLr6Cg0/hw4ngYECSSQTbBInRsfb8Q9stv+Xgku/HTV8BI1Aye0E0XcEXjDnv0gjtPXZ91lpXUpYXErEWGGP7PUREE1B5f6+stVf48dIX23mjFpM3JxxuCMu9YnMFjECWZmmWZulgfKy+zVGyfZqG+kvqnKuJZuuTf2aRy0Iq6KZrzyd68AAAAP//0wYgowAAAAZJREFUAwBouSuRcwcvpgAAAABJRU5ErkJggg==") 1x, url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAYAAADFw8lbAAAAxklEQVR4nOzYoQ7CMBSF4bO1waBmmEDzAGgkjgfG4fALFk+yBDFVQ1rG5ia5zQlJyfn0velvam6NQtQoRDGh3jLctu3Ge1xBkFJ16Pv++e28KTSl5Cc7EMQYTW+bhpf264jtyrSCxwvoQt6T2aGnJuHYvE07l6HODtWvZ1Mom0LZFMqmUDaFsimUTaFsCmVTKJtC2RTKplA2hbL95yF36Tw43IIz7cxnx1zZofP5sAv4GVOocy6OI+4gmC7X0TJfoRD69WwfAAAA//9cDuzKAAAABklEQVQDAJxGJmcl67PfAAAAAElFTkSuQmCC") 2x) 10 10, pointer;
 }
 
 /* ─── движение ───────────────────────────────────────────────
@@ -141,10 +143,6 @@ a, .btn, summary, [role="button"] {
 .top .say .arr { display: inline-block; }
 
 @keyframes blink { 50% { opacity: 0; } }
-@keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(31, 122, 77, .45); }
-  70% { box-shadow: 0 0 0 5px rgba(31, 122, 77, 0); }
-}
 
 /* строка услуги: мягкая подсветка, без инверсии и без каретки */
 .svc { transition: background-color .18s ease, border-color .18s ease; }
@@ -176,7 +174,6 @@ a, .btn, summary, [role="button"] {
 
 @media (prefers-reduced-motion: no-preference) {
   .cursor { animation: blink 1.1s step-end .6s infinite; }
-  .live::before { animation: pulse 2.6s ease-in-out infinite; }
 }
 
 @media (prefers-reduced-motion: reduce) {

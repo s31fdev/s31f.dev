@@ -9,7 +9,7 @@ const STACK = [
   ["front", "Next.js · React · TypeScript"],
   ["back", "Node · Python · Postgres · Prisma"],
   ["bots", "Telegram Bot API · MTProto"],
-  ["pay", "Stripe · YooKassa webhooks"],
+  ["pay", "Stripe · PayPal"],
   ["infra", "Vercel · Netlify · Docker"],
   ["ai", "Claude Agent SDK · OpenAI API · RAG"],
 ];
@@ -64,7 +64,7 @@ const STEPS = [
 const WORK = [
   {
     name: "s31f.dev",
-    text: "Astro · CSS — this page: static build, no client-side JavaScript.",
+    text: "Astro · CSS — this page, a static one-pager.",
     shot: "",
   },
   {
@@ -117,6 +117,7 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL :
     <span class="name">s31f.dev</span>
     <span class="live">available for work</span>
     <span class="dim">remote</span>
+    <span class="dim">UTC+0</span>
     <a class="say" href="#contact">say hi <span class="arr">→</span></a>
   </header>
 
@@ -193,7 +194,7 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL :
 
   <footer>
     <span>© {new Date().getFullYear()} s31f.dev</span>
-    <span>built with Astro · no client-side JavaScript</span>
+    <span>built with <a href="https://astro.build">Astro</a></span>
   </footer>
 
 </div>

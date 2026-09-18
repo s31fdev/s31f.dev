@@ -5,3 +5,10 @@ dist/
 
 # локальные макеты направлений, в репозиторий не едут
 directions/
+
+# локальное сравнение курсоров, на сайт не едет
+public/cursors-compare.html
+public/cursors-compare/
+
+# локальное сравнение кнопки в контактах
+src/pages/contact-compare.astro
