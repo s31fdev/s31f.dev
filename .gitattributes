@@ -1,0 +1,2 @@
+# курсоры вшиты в стили как base64 PNG и раздувают CSS — без этого GitHub считает репозиторий CSS-проектом
+src/styles/global.css linguist-detectable=false
