@@ -2,6 +2,10 @@
 
 Personal site: one page, Astro, static output, no client-side JavaScript.
 
+The repository is also the GitHub profile README: the root `README.md` is what
+github.com/s31fdev shows, with its two images in `profile/` (text drawn as outlines,
+light and dark variants).
+
 ```sh
 npm install
 npm run dev      # localhost:4175
