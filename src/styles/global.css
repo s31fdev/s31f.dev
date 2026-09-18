@@ -125,20 +125,9 @@ footer { display: flex; justify-content: space-between; gap: 16px; color: var(--
 
 :root { --line-strong: #b9b4a7; }
 
-/* Панели въезжают снизу, страница при этом становится на 16px выше своего
-   покоя. Chrome компенсирует это привязкой прокрутки и на каждой перезагрузке
-   добавляет те же 16px к позиции — поэтому привязку выключаем. */
-body { overflow-anchor: none; }
-
-/* раскладка, нужна независимо от анимаций */
-h1 .line { display: block; }
 .svc .dollar { display: inline-block; }
 .top .say .arr { display: inline-block; }
 
-@keyframes rise {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: none; }
-}
 @keyframes blink { 50% { opacity: 0; } }
 @keyframes pulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(31, 122, 77, .45); }
@@ -159,29 +148,8 @@ h1 .line { display: block; }
 .top .say:hover .arr { transform: translateX(3px); }
 
 @media (prefers-reduced-motion: no-preference) {
-  /* первый экран — по загрузке */
-  .top { animation: rise .5s ease-out both; }
-  .head .panel { animation: rise .6s cubic-bezier(.2, .75, .25, 1) both; }
-  .head .whoami { animation-delay: .06s; }
-  .head .stack { animation-delay: .14s; }
-  h1 .line { animation: rise .7s cubic-bezier(.2, .75, .25, 1) both; }
-  h1 .line:nth-child(1) { animation-delay: .12s; }
-  h1 .line:nth-child(2) { animation-delay: .2s; }
-  .lead { animation: rise .7s ease-out .3s both; }
-  .cta { animation: rise .7s ease-out .38s both; }
-  .cursor { animation: blink 1.1s step-end 1.1s infinite; }
+  .cursor { animation: blink 1.1s step-end .6s infinite; }
   .live::before { animation: pulse 2.6s ease-in-out infinite; }
-
-  /* остальное — по мере прокрутки; в браузерах без поддержки просто видно сразу */
-  @supports (animation-timeline: view()) {
-    .reveal {
-      animation: rise linear both;
-      animation-timeline: view();
-      animation-range: entry 5% entry 40%;
-    }
-    .work .reveal:nth-child(2) { animation-range: entry 9% entry 44%; }
-    .work .reveal:nth-child(3) { animation-range: entry 13% entry 48%; }
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
