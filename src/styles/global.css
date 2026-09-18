@@ -134,19 +134,9 @@ footer { display: flex; justify-content: space-between; gap: 16px; color: var(--
   70% { box-shadow: 0 0 0 5px rgba(31, 122, 77, 0); }
 }
 
-/* каретка — тот же блок, что в заголовке, но встаёт в наведённую строку */
-.svc h3::after, .btn-dark::after, .btn-accent::after {
-  content: ""; display: inline-block; width: .5em; height: 1.05em;
-  margin-left: .38em; vertical-align: -.16em; background: currentColor;
-  opacity: 0; transition: opacity .12s ease;
-}
-.svc h3::after { background: var(--accent); }
-.svc:hover h3::after, .btn-dark:hover::after, .btn-accent:hover::after { opacity: 1; }
-
-/* строка услуги ведёт себя как выделенная команда в консоли */
-.svc { transition: background-color .18s ease, border-color .18s ease, color .18s ease; }
-.svc:hover { background: var(--ink); border-color: var(--ink); color: var(--panel); }
-.svc:hover p, .svc:hover .price { color: var(--dark-dim); }
+/* строка услуги: мягкая подсветка, без инверсии и без каретки */
+.svc { transition: background-color .18s ease, border-color .18s ease; }
+.svc:hover { background: var(--paper); border-color: var(--line-strong); }
 .svc .dollar { transition: transform .2s ease; }
 .svc:hover .dollar { transform: translateX(3px); }
 
@@ -175,7 +165,6 @@ footer { display: flex; justify-content: space-between; gap: 16px; color: var(--
 @media (prefers-reduced-motion: no-preference) {
   .cursor { animation: blink 1.1s step-end .6s infinite; }
   .live::before { animation: pulse 2.6s ease-in-out infinite; }
-  .svc:hover h3::after, .btn-dark:hover::after, .btn-accent:hover::after { animation: blink 1.1s step-end infinite; }
 }
 
 @media (prefers-reduced-motion: reduce) {
