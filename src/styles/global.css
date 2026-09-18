@@ -134,22 +134,48 @@ footer { display: flex; justify-content: space-between; gap: 16px; color: var(--
   70% { box-shadow: 0 0 0 5px rgba(31, 122, 77, 0); }
 }
 
-/* наведение и нажатие */
-.btn { transition: opacity .18s ease, transform .12s ease, border-color .18s ease; }
-.btn:active { transform: translateY(1px); }
-.svc { transition: background-color .2s ease, border-color .2s ease; }
-.svc:hover { background: var(--paper); border-color: var(--line-strong); }
+/* каретка — тот же блок, что в заголовке, но встаёт в наведённую строку */
+.svc h3::after, .btn-dark::after, .btn-accent::after {
+  content: ""; display: inline-block; width: .5em; height: 1.05em;
+  margin-left: .38em; vertical-align: -.16em; background: currentColor;
+  opacity: 0; transition: opacity .12s ease;
+}
+.svc h3::after { background: var(--accent); }
+.svc:hover h3::after, .btn-dark:hover::after, .btn-accent:hover::after { opacity: 1; }
+
+/* строка услуги ведёт себя как выделенная команда в консоли */
+.svc { transition: background-color .18s ease, border-color .18s ease, color .18s ease; }
+.svc:hover { background: var(--ink); border-color: var(--ink); color: var(--panel); }
+.svc:hover p, .svc:hover .price { color: var(--dark-dim); }
 .svc .dollar { transition: transform .2s ease; }
 .svc:hover .dollar { transform: translateX(3px); }
+
+/* нажатие */
+.btn { transition: opacity .18s ease, transform .12s ease, border-color .18s ease; }
+.btn:active { transform: translateY(1px); }
+
 .work .panel { transition: border-color .2s ease; }
 .work .panel:hover { border-color: var(--line-strong); }
-.links a, .top .say { transition: color .18s ease; }
+
+/* подчёркивание допечатывается слева направо */
+.links a {
+  text-decoration: none;
+  background-image: linear-gradient(var(--accent), var(--accent)), linear-gradient(rgba(236, 234, 228, .35), rgba(236, 234, 228, .35));
+  background-repeat: no-repeat;
+  background-position: 0 100%, 0 100%;
+  background-size: 0 1px, 100% 1px;
+  transition: background-size .22s ease;
+}
+.links a:hover, .links a:focus-visible { background-size: 100% 1px, 100% 1px; }
+
+.top .say { transition: color .18s ease; }
 .top .say .arr { transition: transform .18s ease; }
 .top .say:hover .arr { transform: translateX(3px); }
 
 @media (prefers-reduced-motion: no-preference) {
   .cursor { animation: blink 1.1s step-end .6s infinite; }
   .live::before { animation: pulse 2.6s ease-in-out infinite; }
+  .svc:hover h3::after, .btn-dark:hover::after, .btn-accent:hover::after { animation: blink 1.1s step-end infinite; }
 }
 
 @media (prefers-reduced-motion: reduce) {
