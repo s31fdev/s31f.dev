@@ -117,14 +117,17 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL :
     <span class="name">s31f.dev</span>
     <span class="live">available for work</span>
     <span class="dim">remote</span>
-    <a class="say" href="#contact">say hi →</a>
+    <a class="say" href="#contact">say hi <span class="arr">→</span></a>
   </header>
 
   <div class="head">
     <section class="panel whoami">
       <header><span>~/whoami</span><span>01</span></header>
       <div class="inner">
-        <h1>Fullstack developer.<br />Send the task, I'll ship it<span class="cursor" aria-hidden="true"></span></h1>
+        <h1>
+          <span class="line">Fullstack developer.</span>
+          <span class="line">Send the task, I'll ship it<span class="cursor" aria-hidden="true"></span></span>
+        </h1>
         <p class="lead">
           Sites and web apps, Telegram bots, scrapers, integrations, AI features — and fixing code that someone else,
           or some AI tool, left broken. A one-hour task or a project that runs for months: both fine.
@@ -144,7 +147,7 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL :
     </aside>
   </div>
 
-  <section class="panel services" id="services">
+  <section class="panel services reveal" id="services">
     <header><span>~/services</span><span>03</span></header>
     <div class="inner">
       {SERVICES.map((s) => (
@@ -157,7 +160,7 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL :
     </div>
   </section>
 
-  <section class="panel steps">
+  <section class="panel steps reveal">
     <header><span>~/how-it-works</span><span>04</span></header>
     <div class="inner">
       {STEPS.map(([name, text], i) => (
@@ -168,7 +171,7 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL :
 
   <section class="work" id="work">
     {WORK.map((w, i) => (
-      <article class="panel">
+      <article class="panel reveal">
         <header>~/work/{String(i + 1).padStart(2, "0")}</header>
         {w.shot ? <img class="shot" src={base + w.shot} alt={w.name} width="800" height="500" loading="lazy" />
                 : <div class="shot">no screenshot yet</div>}
@@ -177,7 +180,7 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL :
     ))}
   </section>
 
-  <section class="panel contact" id="contact">
+  <section class="panel contact reveal" id="contact">
     <header><span>~/contact</span><span>05</span></header>
     <div class="inner">
       <div>
@@ -191,7 +194,7 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL :
     </div>
   </section>
 
-  <footer>
+  <footer class="reveal">
     <span>© {new Date().getFullYear()} s31f.dev</span>
     <span>built with Astro · no client-side JavaScript</span>
   </footer>
