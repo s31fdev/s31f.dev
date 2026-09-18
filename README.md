@@ -1,7 +1,7 @@
 <p><a href="https://s31f.dev">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="profile/banner-dark.svg">
-    <img alt="Hi, I'm Max. Fullstack developer. I build web apps, Telegram bots and AI features — mostly in TypeScript, with Python where it fits. Now building ЕДУДА, a dashboard for educational centers. Stack: Next.js, React, TypeScript, Node, Python, Postgres, Prisma, Telegram Bot API, MTProto, Stripe, PayPal, Vercel, Netlify, Docker, Claude Agent SDK, OpenAI API, RAG." src="profile/banner-light.svg">
+    <img alt="Hi, I'm Max. Fullstack developer. I build sites and web apps, Telegram bots, integrations and AI features. Mostly TypeScript, with Python where it fits. Now building eduda, a CRM system for educational centers. Stack: Next.js, React, TypeScript, Node, Python, Postgres, Prisma, Telegram Bot API, MTProto, Stripe, PayPal, Vercel, Netlify, Docker, Claude Agent SDK, OpenAI API, RAG." src="profile/banner-light.svg">
   </picture>
 </a></p>
 
